@@ -1,0 +1,15 @@
+{% extends 'grievances/base.html' %}
+
+{% block content %}
+      <h3>Grievance : {{ post.pk }}</h3>
+                <div class="post">
+                    <h3><a href="{% url 'grievance_detail' pk=post.pk %}">{{ post.heading }}</a></h3>
+                    <div class="date">
+                        <p>Posted on: {{ post.posted_date }}</p>
+                    </div>
+                    <p>Posted by: {{ post.complainant|linebreaksbr }}</p>
+                    <p>Assigned to: {{ post.assigned_to|linebreaksbr }}</p>
+                    <p>{{ post.complaint|linebreaksbr }}</p>
+                </div>
+
+{% endblock %}

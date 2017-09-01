@@ -1,0 +1,21 @@
+{% extends 'grievances/base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+        <a href="{% url 'grievance_new' %}" class="pull-right"><span class="glyphicon glyphicon-plus"></span></a>
+{% endif %}
+      <h1>Grievances</h1>
+      {% for post in grievanceposts %}
+                <div class="post">
+                    <h3><a href="{% url 'grievance_detail' pk=post.pk %}">{{ post.heading }}</a>
+                    {% if post.status == 1 %}
+                    <span class="glyphicon glyphicon-ok"></span>
+                    {% endif %}
+                    </h3>
+                    <div class="date">
+                        <p>Posted on: {{ post.posted_date }}</p>
+                    </div>
+                    <p>Posted by: {{ post.complainant|linebreaksbr }}</p>
+                </div>
+            {% endfor %}
+{% endblock %}
